@@ -660,7 +660,7 @@ GeometricField.CreateStart(GeometricFieldUserNumber,Region)
 GeometricField.NumberOfVariablesSet(1)
 GeometricField.VariableLabelSet(iron.FieldVariableTypes.U,'Coordinates')
 GeometricField.TypeSet = iron.FieldTypes.GEOMETRIC
-GeometricField.meshDecomposition = Decomposition
+GeometricField.decomposition = Decomposition
 GeometricField.ScalingTypeSet = iron.FieldScalingTypes.NONE
 # Set the mesh component to be used by the geometric field components
 for componentNumber in range(1,CoordinateSystem.dimension+1):
@@ -717,7 +717,7 @@ if (streeBoundaries):
     GeometricFieldTime.NumberOfVariablesSet(1)
     GeometricFieldTime.VariableLabelSet(iron.FieldVariableTypes.U,'Time')
     GeometricFieldTime.TypeSet = iron.FieldTypes.GEOMETRIC
-    GeometricFieldTime.meshDecomposition = DecompositionTime
+    GeometricFieldTime.decomposition = DecompositionTime
     GeometricFieldTime.ScalingTypeSet = iron.FieldScalingTypes.NONE
     # Set the mesh component to be used by the geometric field components
     for componentNumber in range(1,CoordinateSystem.dimension+1):
