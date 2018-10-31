@@ -80,9 +80,12 @@ from opencmiss.iron import iron
 #iron.ErrorHandlingModeSet(iron.ErrorHandlingModes.TRAP_ERROR)
 #iron.OutputSetOn("Testing")
 
-# Get the computational nodes info
+# Get the number of computational nodes and this computational node number
+#computationEnvironment = iron.ComputationEnvironment()
+#numberOfComputationalNodes = computationEnvironment.NumberOfWorldNodesGet()
+#computationalNodeNumber = computationEnvironment.WorldNodeNumberGet()
 numberOfComputationalNodes = iron.ComputationalNumberOfNodesGet()
-computationalNodeNumber    = iron.ComputationalNodeNumberGet()
+computationalNodeNumber = iron.ComputationalNodeNumberGet()
 
 #================================================================================================================================
 #  Problem Control Panel
