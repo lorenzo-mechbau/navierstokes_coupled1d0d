@@ -69,11 +69,17 @@ MaterialsFieldUserNumberb1     = 8
 
 # Import the libraries (OpenCMISS,python,numpy,scipy)
 import numpy,math,cmath,csv,time,sys,os,pdb
+from opencmiss.iron import iron
 from scipy.fftpack import fft,ifft
 from scipy.sparse  import linalg
 from scipy.linalg  import inv,eig
 from scipy.special import jn
-from opencmiss.iron import iron
+
+# Path from command line argument or cd
+if len(sys.argv) > 1:
+    file_root_directory = sys.argv[1]
+else:
+    file_root_directory = os.path.dirname(__file__)
 
 # Diagnostics
 #iron.DiagnosticsSetOn(iron.DiagnosticTypes.ALL,[1,2,3,4,5],"Diagnostics",[""])
@@ -123,11 +129,13 @@ ProgressDiagnostics = False   # Set to diagnostics
 #  Mesh Reading
 #================================================================================================================================
 
+inputNode_fileName = os.path.join(file_root_directory, "Input/Node.csv")
+
 if (ProgressDiagnostics):
     print " == >> Reading geometry from files... << == "
 
 # Read the node file
-with open('Input/Node.csv','rb') as csvfile:
+with open(inputNode_fileName,'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     rownum = 0
     for row in reader:
@@ -213,7 +221,8 @@ with open('Input/Node.csv','rb') as csvfile:
 #------------------
 
 # Read the element file
-with open('Input/Element.csv','rb') as csvfile:
+inputElement_fileName = os.path.join(file_root_directory, "Input/Element.csv")
+with open(inputElement_fileName,'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter=',')
     rownum = 0
     i = 0
@@ -1912,3 +1921,5 @@ print "#"
 #================================================================================================================================
 #  Finish Program
 #================================================================================================================================
+# Finalise OpenCMISS-Iron
+iron.Finalise()
